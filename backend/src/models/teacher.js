@@ -7,6 +7,7 @@ const Docente = sequelize.define('docente', {
         type: DataTypes.INTEGER,
         primaryKey: true,
         allowNull: false,
+        autoIncrement: true,
     },
     id_gmail: {
         type: DataTypes.TEXT,

@@ -6,20 +6,12 @@ const Estudiante = sequelize.define('estudiante', {
     id_estudiante: {
         type: DataTypes.INTEGER,
         primaryKey: true,
-        allowNull: false,
+        autoIncrement: true
     },
     id_gmail: {
         type: DataTypes.TEXT,
         unique: true,
-    },
-    nombre: {
-        type: DataTypes.TEXT,
-        allowNull: false,
-    },
-    apellido: {
-        type: DataTypes.TEXT,
-        allowNull: false,
-    },
+    }
 }, {
     tableName: 'estudiante',
     schema: 'proyecto',

@@ -6,7 +6,15 @@ const Aula = sequelize.define('aula', {
     id_aula: {
         type: DataTypes.INTEGER,
         primaryKey: true,
+        autoIncrement: true,
         allowNull: false,
+    },
+    nombre: {
+        type: DataTypes.TEXT,
+        allowNull: false,
+        validate: {
+            len: [3, 50], // Minimum 3 characters, maximum 50 characters
+        },
     },
     id_asignatura: {
         type: DataTypes.INTEGER,

@@ -21,6 +21,16 @@ module.exports = {
         },
         onUpdate: 'CASCADE',
         onDelete: 'RESTRICT'
+      },
+      id_estudiante: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: { tableName: 'estudiante', schema: 'proyecto' },
+          key: 'id_estudiante'
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'RESTRICT'
       }
     }, {
       schema: 'proyecto',

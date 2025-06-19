@@ -5,22 +5,24 @@ const Ubicacion = sequelize.define('ubicacion', {
     id_ubicacion: {
         type: DataTypes.INTEGER,
         primaryKey: true,
+        autoIncrement: true,
         allowNull: false,
     },
-    edificio: {
+    nombre: {
         type: DataTypes.TEXT,
         allowNull: false,
-    },
-    piso: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        validate: {
-            min: 0,
-        },
     },
     descripcion: {
         type: DataTypes.TEXT,
     },
+    latitud: {
+        type: DataTypes.DECIMAL(10, 8),
+        allowNull: true
+    },
+    longitud: {
+        type: DataTypes.DECIMAL(11, 8),
+        allowNull: true
+    }
 }, {
     tableName: 'ubicacion',
     schema: 'proyecto',

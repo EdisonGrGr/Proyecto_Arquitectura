@@ -50,3 +50,43 @@ function handleCredentialResponse(response) {
         alert('Error en la autenticación. Por favor intente nuevamente.');
     });
 }
+
+document.getElementById('login-form').addEventListener('submit', async function (e) {
+  e.preventDefault(); // Previene el envío tradicional del formulario
+console.log('Formulario de inicio de sesión enviado');
+
+  const form = e.target;
+
+  // Captura los datos del formulario
+  const id_gmail = form.id_gmail.value;
+  const password = form.password.value;
+
+  try {
+    const response = await fetch('/api/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ id_gmail, password })
+    });
+
+    const result = await response.json();
+
+    if (result.success) {
+      localStorage.setItem('token', result.token);
+      localStorage.setItem('user', JSON.stringify(result.user));
+
+      // Redirigir según el rol
+      const redirectUrl = result.user.id_rol === 3 ? '/admin/admin.html' : '/dashboard.html';
+      window.location.href = redirectUrl;
+      alert('Inicio de sesión exitoso');
+
+    } else {
+      alert(result.message || 'Error en el inicio de sesión');
+    }
+
+  } catch (err) {
+    console.error('Error al iniciar sesión:', err);
+    alert('Error de red o servidor');
+  }
+});

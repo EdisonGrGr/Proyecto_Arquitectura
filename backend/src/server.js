@@ -6,6 +6,8 @@ const path = require('path');
 const { initializeDatabase } = require('./config/database');
 const db = require('./models/index');
 const authRoutes = require('./routes/authroutes');
+const subjectRoutes = require('./routes/adminRoutes');
+
 const userRoutes = require('./routes/user.routes');
 const ubicacionRoutes = require('./routes/ubicacionRoutes');
 
@@ -36,6 +38,8 @@ async function startServer() {
     app.use('/api', authRoutes);
     app.use('/api/users', userRoutes);
     app.use('/api/ubicacion', ubicacionRoutes);
+    app.use('/api', subjectRoutes);
+
 
     // Iniciamos el servidor
     app.listen(PORT, () => {

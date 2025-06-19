@@ -6,17 +6,18 @@ const Asignatura = sequelize.define('asignatura', {
     id_asignatura: {
         type: DataTypes.INTEGER,
         primaryKey: true,
+        autoIncrement: true,
         allowNull: false,
     },
     id_estudiante: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
     },
     id_docente: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
     },
-    descripcion: {
+    nombre: {
         type: DataTypes.TEXT,
         allowNull: false,
         validate: {

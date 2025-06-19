@@ -2,7 +2,8 @@ const express = require('express');
 const router = express.Router();
 const { consultarUbicacionGemini } = require('../controllers/ubicacionController');
 
-router.post('/ubicacion-aula', async (req, res) => {
+// 👇 ESTE BLOQUE ESTÁ CORRECTAMENTE ENVUELTO
+router.post('/consulta', async (req, res) => {
   try {
     const { pregunta } = req.body;
 
@@ -12,10 +13,12 @@ router.post('/ubicacion-aula', async (req, res) => {
 
     const respuesta = await consultarUbicacionGemini(pregunta);
     res.json({ respuesta });
+
   } catch (error) {
     console.error('Error con Gemini:', error);
     res.status(500).json({ error: 'Error al consultar Gemini' });
   }
 });
+
 
 module.exports = router;

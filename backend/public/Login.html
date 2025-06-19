@@ -8,24 +8,25 @@
   <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 <body>
-  <div class="login-wrapper">
+  <div class="login-wrapper1">
     <div class="login-container">
       <h1 class="fade-in">Inicia Sesión</h1>
       <img src="images/logo_ucaldas.png" alt="Universidad de Caldas" class="logo fade-in" />
       
-      <form class="form-slide">
-        <div class="input-group">
-          <input type="email" required />
-          <label>Email</label>
-        </div>
+    <form id="login-form" class="form-slide">
+      <div class="input-group">
+        <input type="email" name="id_gmail" required />
+        <label>Email</label>
+      </div>
 
-        <div class="input-group">
-          <input type="password" required />
-          <label>Contraseña</label>
-        </div>
+      <div class="input-group">
+        <input type="password" name="password" required />
+        <label>Contraseña</label>
+      </div>
 
-        <button type="submit" class="btn-glow">Iniciar Sesión</button>
-      </form>
+      <button type="submit" class="btn-glow">Iniciar Sesión</button>
+    </form>
+
 
       <div class="google-login">
         <div id="g_id_onload"

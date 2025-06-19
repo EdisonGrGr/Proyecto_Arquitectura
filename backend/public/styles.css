@@ -14,7 +14,20 @@ body {
   align-items: center;
 }
 
+
 .login-wrapper {
+  transform: scale(0.85);
+  transform-origin: center;
+  position: absolute;
+  top: 55%;
+  left: 65%;
+  translate: -50% -50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-wrapper1 {
   transform: scale(0.75);
   transform-origin: center;
   position: absolute;
@@ -214,4 +227,15 @@ button {
     transform: translateY(0);
     opacity: 1;
   }
+}
+
+#Mi_Mapa{
+  width: 500px;
+  height: 500px;
+  position: absolute;
+  top: 25%;
+  left: 10%;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
 }

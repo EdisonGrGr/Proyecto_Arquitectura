@@ -7,7 +7,7 @@
 
 const bcrypt = require('bcryptjs');
 const userService = require('../services/userService');
-
+const { Asignatura, Aula } = require('../models');
 class UserController {
     /**
      * Register new user
@@ -23,14 +23,22 @@ class UserController {
             };
 
             const newUser = await userService.registerUser(userData);
+
+            if (userData.id_rol === 2) {
+      await Docente.create({
+        id_gmail: newUser.id_gmail,
+        nombre: userData.nombre,
+        apellido: userData.apellido
+      });
+    }
             
             res.status(201).json({
                 success: true,
                 message: 'Usuario registrado exitosamente',
                 data: {
                     id_gmail: newUser.id_gmail,
-                    nombre: newUser.nombre,
-                    apellido: newUser.apellido,
+                    nombre: userData.nombre,
+                    apellido: userData.apellido,
                     id_rol: newUser.id_rol
                 }
             });
@@ -41,6 +49,9 @@ class UserController {
             });
         }
     }
-}
+    
+  }
+
+
 
 module.exports = new UserController();
