@@ -31,7 +31,7 @@ Asegúrate de tener instalado:
 ### 1. Clona el repositorio
 
 ```bash
-git clone <URL_DEL_REPOSITORIO>
+git clone <https://github.com/EdisonGrGr/Proyecto_Arquitectura.git>
 cd Proyecto_Arquitectura
 
 
