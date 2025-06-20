@@ -16,22 +16,22 @@ const PORT = process.env.PORT || 3000;
 
 async function startServer() {
   try {
-    // Verificamos la conexión
+    
     await initializeDatabase();
     console.log('✅ Conexión a la base de datos establecida.');
 
-    // configuración de CORS
+    
     app.use(cors({
       origin:['http://localhost:3000', 'http://localhost'],
       credentials: true,
     }));
 
-    // Configuración básica de Express
+    
     app.use(express.json());
     app.use(express.urlencoded({ extended: true }));
     app.use(express.static(path.join(__dirname, '../public')));
 
-    // Rutas básicas
+    
     app.get('/', (req, res) => {
       res.sendFile(path.join(__dirname, '../public/Login.html'));
     });
@@ -41,7 +41,7 @@ async function startServer() {
     app.use('/api', subjectRoutes);
 
 
-    // Iniciamos el servidor
+    
     app.listen(PORT, () => {
       console.log(`✅ Servidor corriendo en http://localhost:${PORT}`);
     });

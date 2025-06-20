@@ -1,7 +1,4 @@
-/**
- * Database connection and initialization configuration
- * Configuración de conexión e inicialización de la base de datos
- */
+
 const { Sequelize } = require('sequelize');
 require('dotenv').config();
 

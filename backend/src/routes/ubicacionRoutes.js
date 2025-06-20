@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const { consultarUbicacionGemini } = require('../controllers/ubicacionController');
 
-// 👇 ESTE BLOQUE ESTÁ CORRECTAMENTE ENVUELTO
 router.post('/consulta', async (req, res) => {
   try {
     const { pregunta } = req.body;

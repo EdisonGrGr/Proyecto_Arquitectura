@@ -48,7 +48,7 @@ Responde brevemente (máximo 2 líneas) y entrega las coordenadas exactas en for
 Pregunta del estudiante: ${pregunta}
     `;
 
-    console.log("📌 CONTEXTO ENVIADO A GEMINI:\n", mensaje);
+    
 
     const url = `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
 

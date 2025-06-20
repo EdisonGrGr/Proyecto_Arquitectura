@@ -8,7 +8,7 @@ class UserService {
     const transaction = await Usuario.sequelize.transaction();
 
     try {
-      // Validar si ya existe un usuario con ese correo
+      
       const existingUser = await Usuario.findOne({
         where: { id_gmail: userData.id_gmail }
       });
@@ -17,10 +17,10 @@ class UserService {
         throw new Error('El correo electrónico ya está registrado');
       }
 
-      // Crear el usuario
+      
       const newUser = await Usuario.create(userData, { transaction });
 
-      // Insertar en la tabla correspondiente según el rol
+      
       switch (userData.id_rol) {
         case 1: // Estudiante
           await Estudiante.create(
@@ -28,7 +28,7 @@ class UserService {
             { transaction }
           );
           break;
-        case 2: // Docente
+        case 2: 
           await Docente.create(
   {
     id_gmail: userData.id_gmail,
@@ -38,8 +38,7 @@ class UserService {
   { transaction }
 );
           break;
-        case 3: // Administrador
-          // No se crea en otra tabla
+        case 3: 
           break;
         default:
           throw new Error('Rol no válido');

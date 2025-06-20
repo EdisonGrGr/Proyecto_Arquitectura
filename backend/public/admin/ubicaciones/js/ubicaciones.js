@@ -30,7 +30,7 @@ async function crearUbicacion() {
       throw new Error(error.message || 'Error al crear');
     }
 
-    alert('Ubicación creada correctamente');
+    //alert('Ubicación creada correctamente');
     document.getElementById('ubicacionForm').reset();
     await cargarUbicaciones();
   } catch (error) {
@@ -57,7 +57,7 @@ async function actualizarUbicacion(id) {
       throw new Error(error.message || 'Error al actualizar');
     }
 
-    alert('Ubicación actualizada correctamente');
+    //alert('Ubicación actualizada correctamente');
     document.getElementById('ubicacionForm').reset();
     document.getElementById('id_ubicacion').value = '';
     await cargarUbicaciones();
@@ -103,7 +103,7 @@ async function eliminarUbicacion(id) {
       throw new Error(error.message || 'Error al eliminar');
     }
 
-    alert('Ubicación eliminada');
+    //alert('Ubicación eliminada');
     await cargarUbicaciones();
   } catch (error) {
     console.error('Error al eliminar ubicación:', error);

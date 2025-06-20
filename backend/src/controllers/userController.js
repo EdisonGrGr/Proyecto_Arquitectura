@@ -1,9 +1,4 @@
-/**
- * User Controller
- * Controlador de Usuarios
- * Handles user-related operations
- * Maneja operaciones relacionadas con usuarios
- */
+
 
 const bcrypt = require('bcryptjs');
 const userService = require('../services/userService');

@@ -48,7 +48,7 @@ async function guardarAsignatura(e) {
     const result = await res.json();
 
     if (result.success) {
-      alert('Asignatura guardada');
+      //alert('Asignatura guardada');
       form.reset();
       listarAsignaturas();
     } else {
@@ -104,7 +104,7 @@ async function eliminarAsignatura(id) {
     const result = await res.json();
 
     if (result.success) {
-      alert('Asignatura eliminada');
+      //alert('Asignatura eliminada');
       listarAsignaturas();
     } else {
       alert('Error: ' + result.message);

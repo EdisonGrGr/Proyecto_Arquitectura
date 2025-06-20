@@ -1,9 +1,4 @@
-/**
- * Authentication Controller
- * Controlador de Autenticación
- * Handles user authentication, registration and token verification
- * Maneja autenticación de usuarios, registro y verificación de tokens
- */
+
 
 const { googleAuth } = require('../services/googleAuthService');
 const bcrypt = require('bcryptjs');
@@ -11,18 +6,15 @@ const jwt = require('jsonwebtoken');
 const UserFactory = require('../utils/userFactory');
 const userRepo = require('../repositories/userRepository');
 
-// Autenticación con Google
+
 exports.loginWithGoogle = googleAuth;
 
-/**
- * Normal login with email and password
- * Login normal con email y contraseña
- */
+
 exports.login = async (req, res) => {
   try {
     const { id_gmail, password } = req.body;
 
-    // Verificar si el usuario existe
+    
     const user = await userRepo.findUserById(id_gmail);
     if (!user) {
       return res.status(401).json({
@@ -31,7 +23,7 @@ exports.login = async (req, res) => {
       });
     }
 
-    // Verificar contraseña
+    
     const validPassword = await bcrypt.compare(password, user.password);
     if (!validPassword) {
       return res.status(401).json({
@@ -40,7 +32,7 @@ exports.login = async (req, res) => {
       });
     }
 
-    // Generar token JWT
+    
     const token = jwt.sign(
       {
         id_gmail: user.id_gmail,
@@ -50,7 +42,7 @@ exports.login = async (req, res) => {
       { expiresIn: '1h' }
     );
 
-    // Enviar respuesta
+    
     res.status(200).json({
       success: true,
       token,
@@ -71,10 +63,7 @@ exports.login = async (req, res) => {
   }
 };
 
-/**
- * User registration handler
- * Manejador de registro de usuarios
- */
+
 exports.register = async (req, res) => {
   try {
     const { id_gmail, nombre, apellido, password, id_rol } = req.body;
@@ -134,10 +123,7 @@ exports.register = async (req, res) => {
   }
 };
 
-/**
- * JWT Token verification
- * Verificación de token JWT
- */
+
 exports.verifyToken = async (req, res) => {
   try {
     const token = req.headers.authorization?.split(' ')[1];

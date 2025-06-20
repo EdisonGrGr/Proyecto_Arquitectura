@@ -1,4 +1,4 @@
-// test/funcional.test.js
+
 const request = require('supertest');
 const app = require('../backend/src/app');
 const db = require('../backend/src/models');

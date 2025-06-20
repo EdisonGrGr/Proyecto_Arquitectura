@@ -10,7 +10,7 @@ async function googleAuth(req, res) {
   const { credential } = req.body;
 
   try {
-    // Verificar el token con Google
+    
     const ticket = await client.verifyIdToken({
       idToken: credential,
       audience: process.env.GOOGLE_CLIENT_ID,
@@ -18,11 +18,11 @@ async function googleAuth(req, res) {
 
     const payload = ticket.getPayload();
     
-    // Buscar si el usuario ya existe
+    
     let user = await userRepo.findUserById(payload.email);
 
     if (!user) {
-      // Si no existe, crear un nuevo usuario
+      
       const randomPassword = Math.random().toString(36).slice(-8);
       const hashedPassword = await bcrypt.hash(randomPassword, 10);
 
@@ -40,7 +40,7 @@ async function googleAuth(req, res) {
       console.log('Nuevo usuario creado:', user.id_gmail);
     }
 
-    // Generar token JWT
+    
     const token = jwt.sign(
       { 
         id_gmail: user.id_gmail,

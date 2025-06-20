@@ -1,11 +1,11 @@
 const request = require('supertest');
-const app = require('../backend/src/app'); // exporta `app` sin iniciar el servidor en server.js
+const app = require('../backend/src/app'); 
 const db = require('../backend/src/models');
 
 describe('POST /api/users/register', () => {
-  // Limpia después de cada prueba
+  
   afterAll(async () => {
-    // Borra el usuario de prueba si fue creado
+    
     await db.usuario.destroy({ where: { id_gmail: 'nuevo@test.com' } });
     await db.sequelize.close();
   });
@@ -19,7 +19,7 @@ describe('POST /api/users/register', () => {
       password: '123456'
     });
 
-    expect(res.statusCode).toBe(200); // o 201 según tu implementación
+    expect(res.statusCode).toBe(200); 
     expect(res.body).toHaveProperty('success', true);
     expect(res.body).toHaveProperty('user');
   });
@@ -30,7 +30,7 @@ describe('POST /api/users/register', () => {
       nombre: 'Nuevo',
       apellido: 'Usuario',
       id_rol: 3,
-      password: '' // vacío simula error de frontend
+      password: '' 
     });
 
     expect(res.statusCode).toBeGreaterThanOrEqual(400);
